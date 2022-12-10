@@ -1,11 +1,10 @@
-- name: Install the Keystone
-  apt:
-    name: keystone
-    state: present
-    update_cache: yes
-
-- name: Start the Keystone
-  service:
-    name: keystone
-    state: restarted
-    enabled: yes
+- name: Install Keystone Ubuntu
+    apt:
+      name:
+        - keystone
+        - apache2
+        - libapache2-mod-php
+        - php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
